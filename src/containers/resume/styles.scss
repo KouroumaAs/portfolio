@@ -1,0 +1,92 @@
+.resumes {
+    height: 100%;
+    .timeline{
+        display: flex;
+        width: 100%;
+        padding: 20px;
+
+        &__experience,&__education{
+          width: 50%;
+          gap: 2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          &__header-text{
+                display: inline-block;
+                color: var(--yellow-theme-sub-text-color);
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 1rem;
+                letter-spacing: 0.5px;
+                position: relative;
+                padding: 10px 10px;
+                border-bottom: 2px solid var(--yellow-theme-main-color);
+                &::after,&::before{
+                    position: absolute;
+                    content: '';
+                    width: 2px;
+                    height: 5px;
+                    background: var(--yellow-theme-main-color);
+                    bottom: -1px;
+                  }
+                  &::before{
+                      left: 0;
+                  }
+                  &::after{
+                      right: 0;
+                  }
+          }
+          &__vertical-timeline-element{
+             padding: 0 0 30px 0px;
+             &:last-child{
+                padding-bottom: 0px;
+             }
+          }
+          .vertical-timeline-element-title-wrapper{
+             display: flex;
+             align-items:start;
+             flex-direction: column;
+             gap: 1.5em;
+             h3 , h4{
+               font-size: 16px;
+             }
+            //  h4{
+            //     margin-left: 8px;
+            //  }
+             p{
+                font-size: 18px;
+             }
+          }
+          .vertical-timeline-element-subtitle{
+            color: #8D8D8B;
+          }
+          .vertical-timeline-element-title-wrapper-description{
+            font-size: 18px;
+          }
+          .vertical-timeline-element-content{
+            box-shadow: none;
+          }
+          .vertical-timeline-element-content-arrow{
+            display: none;
+          }
+          .vertical-timeline-element-content-date{
+            opacity: 1;
+            color: var(--yellow-theme-sub-text-color);
+            font-size: 0px;
+            font-size: 18px !important;
+          }
+        }
+    }
+}
+@media screen and (max-width: 768px){
+    .resumes {
+        .timeline{
+            flex-direction: column;
+            &__experience,&__education{
+                width: 100%;
+                gap: 2rem;
+            }
+        }
+    }
+}
