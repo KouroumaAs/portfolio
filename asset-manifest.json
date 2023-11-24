@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/KouroumaAs/portfolio/static/css/main.1318847a.css",
+    "main.js": "/KouroumaAs/portfolio/static/js/main.fa57dde6.js",
+    "static/media/image-2.png": "/KouroumaAs/portfolio/static/media/image-2.b89a77e7d1b18a2c251a.png",
+    "static/media/image-3.png": "/KouroumaAs/portfolio/static/media/image-3.fe10abbd00f76669afa8.png",
+    "static/media/image-1.png": "/KouroumaAs/portfolio/static/media/image-1.cbd87c908145e8a7552c.png",
+    "index.html": "/KouroumaAs/portfolio/index.html",
+    "main.1318847a.css.map": "/KouroumaAs/portfolio/static/css/main.1318847a.css.map",
+    "main.fa57dde6.js.map": "/KouroumaAs/portfolio/static/js/main.fa57dde6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1318847a.css",
+    "static/js/main.fa57dde6.js"
+  ]
+}
