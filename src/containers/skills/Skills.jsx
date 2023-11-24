@@ -6,7 +6,7 @@ import { SkillsData } from '../../utils/particles';
 import { Animate, AnimateKeyframes } from 'react-simple-animate';
 import { Line } from 'rc-progress';
 function Skills() {
-  console.log(SkillsData)
+
   return (
     <section className='skills' id="skills">
       <PageHeaderContain 
@@ -37,8 +37,9 @@ function Skills() {
                        duration={1}
                        keyframes={["opacity: 1" ,"opacity:0"]}
                        iterationCount= "1"
+                       key={skillItem.skillName+"_"+j}
                     >
-                     <div className='progressbar-wrapper' key={j}>
+                     <div className='progressbar-wrapper'>
                          <p>{skillItem.skillName}</p>
                          <Line 
                            percent={skillItem.percentage}
