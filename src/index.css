@@ -25,3 +25,8 @@ body{
 #root{
     height: 100%;
 }
+
+.toastElement{
+    font-size: 24px;
+    padding: 10px 20px;
+}

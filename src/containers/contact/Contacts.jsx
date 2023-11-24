@@ -4,11 +4,15 @@ import { BsInfoCircleFill } from "react-icons/bs";
 import "./styles.scss";
 import { Animate } from "react-simple-animate";
 import { useForm } from "react-hook-form";
+import API from "../../utils/API";
+import Erreurs from "../../components/Erreurs/Erreurs";
+import { toast } from "react-hot-toast";
+
 function Contacts() {
   const [contactData, setContactData] = useState({
     nom: "",
     email: "",
-    commentaire: "",
+    message: "",
   });
   const {
     register,
@@ -16,12 +20,59 @@ function Contacts() {
     reset,
     formState: { errors },
   } = useForm({ defaultValues: { contactData } });
+  const [ erreurs, setErreurs ] = useState([]);
+  const [isLoading,setIsLoading ] = useState(false);
+
+  const api = new API();
   const handleInput = (e) => {
     setContactData({ ...contactData, [e.target.name]: e.target.value });
   };
-  const submitForm = () => {
-     console.log(contactData)
+  const submitForm = async () => {
+    setIsLoading(true);setErreurs([])
+      const response = await api.apiData("post","contact/sendMail",contactData);
+    
+    if( response.status !== 200 ){
+       setErreurs(response.errors);
+       setIsLoading(false);
+     } 
+     else{
+      setTimeout(() => {
+        setIsLoading(false);
+        
+        setContactData({
+          nom: "",
+          email: "",
+          message: "",
+        });
+        // toast.success("Message Envoyé avec succès.");
+        toast.success("Message Envoyé avec succès.",{
+          duration: 8000,
+          position: 'bottom-right',
+        
+          // Styling
+          style: {},
+          className: 'toastElement',
+        
+          // Custom Icon
+          icon: '👏',
+        
+          // Change colors of success/error/loading icon
+          iconTheme: {
+            primary: '#000',
+            secondary: '#fff',
+          },
+        
+          // Aria
+          ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+          },
+        })
+       },4000)
+       
+     }
   }
+  //console.log(erreurs)
   return (
     <section className="contact" id="contact">
       <PageHeaderContain
@@ -55,7 +106,9 @@ function Contacts() {
         >
           <div className="contact__content__form">
             <form onSubmit={handleSubmit(submitForm)}>
+              <Erreurs validation={erreurs} />
               <div className="contact__content__form__controlswrapper">
+               
                 <div className="nameWrapper">
                   <input
                     name="nom"
@@ -110,8 +163,8 @@ function Contacts() {
                 </div>
                 <div className="descriptionWrapper">
                   <textarea
-                    name="commentaire"
-                    {...register("commentaire", {
+                    name="message"
+                    {...register("message", {
                       onChange: (e) => {
                         handleInput(e);
                       },
@@ -120,22 +173,23 @@ function Contacts() {
                     })}
                     className="inputDescription"
                     rows={5}
-                    value={contactData.commentaire}
+                    value={contactData.message}
                   />
                   <label htmlFor="description" className="descriptionLabel">
-                    Commentaire
+                    message
                   </label>
-                  {errors.commentaire && errors.commentaire?.type === "required" && (
+                  {errors.message && errors.message?.type === "required" && (
                     <span className="error-msg">Ce champ est obligatoire.</span>
                   )}
-                  {errors.commentaire && errors.commentaire?.type === "minLength" && (
+                  {errors.message && errors.message?.type === "minLength" && (
                     <span className="error-msg">
                       Ne peut pas être inférieur à deux caractères.
                     </span>
                   )}
                 </div>
               </div>
-              <button type="submit">Envoyer</button>
+              <button type="submit" disabled={isLoading} className={`${isLoading? "btn-disabled":""}`}>{isLoading ? "Patientez...":"Envoyer"}</button>
+              {/* <button type="submit" disabled={isLoading} className="btn-disabled">Envoyer...</button> */}
             </form>
           </div>
         </Animate>

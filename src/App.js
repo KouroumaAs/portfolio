@@ -10,6 +10,7 @@ import Portfolio from './containers/portfolio/Portfolio';
 import Contacts from './containers/contact/Contacts';
 import NavBar from './components/navBar/NavBar';
 import particles from './utils/particles';
+import { Toaster } from 'react-hot-toast';
 function App() {
   const location = useLocation();
   const handleInit =  async (main) => {
@@ -17,13 +18,17 @@ function App() {
   } 
   const renderParticleJsInHomePage = location.pathname === '/';
   return (
+    
     <div className="App">
       {/* particle js */}
+      <Toaster position="bottom-right" reverseOrder={false} />
       {renderParticleJsInHomePage &&
         <Particles id='particles' options={particles} init={handleInit}/>
        }
       {/* navbar  */}
+      
       <NavBar />
+   
       {/* main page content */}
       <div className='App__main-page-content'>
         <Routes>

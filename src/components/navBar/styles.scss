@@ -21,10 +21,11 @@
             display: flex;
             list-style: none;
             text-align: center;
-
+           
             &__item{
                 line-height: 40px;
                 margin-right: 1.5rem;
+                cursor: pointer;
                 &::after{
                     content: '';
                     display: block;
@@ -37,6 +38,7 @@
                   width: 100%;
                   background: var(--yellow-theme-main-color);
                 }
+               
              &__links{
                 color: var(--yellow-theme-main-color);
                 text-decoration: none;
