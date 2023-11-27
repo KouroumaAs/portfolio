@@ -12,13 +12,13 @@ const portfolioData = [
     id: 2,
     name: "Garage du gouvernemement",
     image: image_1,
-    link: 'https://s398531796.initial-website.com/'
+    link: 'https://immagov.com/'
   },
   {
     id: 2,
     name: "Système de paiement Intégré",
     image: image_2,
-    link: 'https://immagov.com/'
+    link: 'https://s398531796.initial-website.com/'
   },
   {
     id: 2,

@@ -198,6 +198,10 @@ export const SkillsData = [{
             skillName:"NoSQL",
             percentage: "30"
          },
+         {
+            skillName:"CyberSecurité",
+            percentage: "30"
+         },
          
     ]
 }
